@@ -1,0 +1,61 @@
+<body>
+  <app-nav-menu></app-nav-menu>
+  <div class="container">
+    <router-outlet></router-outlet>
+    <div class="wrapper">
+      <table mat-table [dataSource]="datasource" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> People_ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.People_ID}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Height">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Height </th>
+          <td mat-cell *matCellDef="let element"> {{element.Height}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Hair_color">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Hair_color </th>
+          <td mat-cell *matCellDef="let element"> {{element.Hair_color}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Mass">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mass </th>
+          <td mat-cell *matCellDef="let element"> {{element.Mass}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Skin_color">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Skin_color </th>
+          <td mat-cell *matCellDef="let element"> {{element.Skin_color}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Eye_color">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Eye_color </th>
+          <td mat-cell *matCellDef="let element"> {{element.Eye_color}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Gender">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Url">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Url </th>
+          <td mat-cell *matCellDef="let element"> {{element.Url}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element" class="action-link">
+            <a (click)="openDialog('Update',element)">Edit</a> |
+            <a (click)="openDialog('Delete',element)">Delete</a>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <!-- Angular 8 pagination -->
+      <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</body>
